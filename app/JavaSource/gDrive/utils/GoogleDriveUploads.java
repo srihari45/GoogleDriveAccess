@@ -43,8 +43,7 @@ public class GoogleDriveUploads {
 	private static final String GOOGLE_CLIENT_ID = "606861000631-kabif4vnsb6e7rmnqei1rov441i22k71.apps.googleusercontent.com";
 	private static final String GOOGLE_CLIENT_SECRET = "j7NRiqAHlbtXm2X28cfpKv-D";
 
-	private static final String[] GOOGLE_REDIRECT_URIS = new String[] { "urn:ietf:wg:oauth:2.0:oob",
-			"http://localhost" };
+	private static final String[] GOOGLE_REDIRECT_URIS = new String[] { "urn:ietf:wg:oauth:2.0:oob", "http://localhost" };
 
 	private static Details getClientSecretDetails() {
 
