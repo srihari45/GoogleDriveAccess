@@ -66,8 +66,7 @@ public class GoogleDriveUploads {
 		clientSecrets.setWeb(getClientSecretDetails());
 
 		// Build flow and trigger user authorization request.
-		flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
-				.setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH))).build();
+		flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES).build();
 		credentials = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
 		return credentials;
 	}
