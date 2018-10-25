@@ -2,14 +2,13 @@
 
 <body>
 	<div class="row">
-		<div id="beforeProcessing" class="hide indicator"></div>
 		<div class="container">
 			<div class='col s12'>
          		<div class="card">
 	         	  <div class="row card-content">
 	         	  	<div class='row'>
 		                <div class='col s12'>
-		                  <h4 class="indigo-text center-align">Files Metadata</h4><br/><br/>
+		                  <h4 class="indigo-text center-align">Manage Contacts</h4><br/><br/>
 		                </div>
                 		<div class="row">
 		                	<div class="col s2"></div>
@@ -20,23 +19,25 @@
 			                			<span style="color:red;">${errorMsg}</span>
 			                		</c:when>
 			                		<c:otherwise>
-			                			<table class='bordered responsive-table'>
+			                			<table class='bordered responsive-table' contactsTable>
 											<thead>
 												<tr>
-													<th>File Name</th>
+													<th>Name</th>
+													<th>Number(s)</th>
 												</tr>
 											</thead>
 											<tbody>
 												<c:choose>
-													<c:when test="${not empty list}">
-														<c:forEach items="${list}" var="strVal">
+													<c:when test="${not empty contacts}">
+														<c:forEach items="${contacts}" var="contact">
 															<tr>
-											 					<td>${strVal}</td>
+											 					<td>${contact.fullName}</td>
+											 					<td>${contact.phoneNumbers[0]} &nbsp; &nbsp; ${contact.phoneNumbers[1]}</td>
 											 				</tr>
 														</c:forEach>
 													</c:when>
 													<c:otherwise>
-														<td>No Files Found</td>
+														<td>No contacts found</td>
 													</c:otherwise>
 												</c:choose>
 											</tbody>
@@ -47,17 +48,14 @@
 			            </div>
 	                </div>
 	                
-	                <div class="row">
-	                	<div class="col s2"></div>
-		                <div class='col s10'>
-		                	<div id="divFiles">
-			                </div>
-		                </div>
-		            </div>
-            
 	         	  </div>
          	    </div>
          	</div>
 		</div>
 	</div>
 </body>
+<script>
+$(document).ready(function() {
+	datatableExperiment('contactsTable', 5);
+});
+</script>

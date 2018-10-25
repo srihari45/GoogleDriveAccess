@@ -29,4 +29,8 @@
 		<put-attribute name="body" value="/WEB-INF/views/pages/jsp/filesMetadata.jsp"/>
 	</definition>
 	
+	<definition name ="manageContactsPage" extends="main">
+		<put-attribute name="body" value="/WEB-INF/views/pages/jsp/manageContacts.jsp"/>
+	</definition>
+	
 </tiles-definitions>

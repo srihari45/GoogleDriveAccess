@@ -29,6 +29,12 @@
 							        <span class="sub-text upload-box">Get Files Metadata</span>
 							    </div>
 							</div>
+							
+							<div class="col s12 m3 m-mb-2 pointer" id="manageContacts">
+							    <div class="db-box primary-bg">
+							        <span class="sub-text upload-box">Manage Contacts</span>
+							    </div>
+							</div>
 					    </div>
 					    
 					    
@@ -49,6 +55,10 @@ $("div#uploadToDrive").on("click", function(){
 
 $("div#filesMetada").on("click", function(){
 	location.href = "${pageContext.request.contextPath}/pub/getFilesMetadata.html";
+});
+
+$("div#manageContacts").on("click", function(){
+	location.href = "${pageContext.request.contextPath}/pub/manageContacts.html";
 });
 
 </script>

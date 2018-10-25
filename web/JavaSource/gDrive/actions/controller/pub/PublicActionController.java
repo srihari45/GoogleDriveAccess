@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import gDrive.beans.ContactBean;
 import gDrive.forms.UploadForm;
 import gDrive.utils.CustomException;
 import gDrive.utils.GoogleDriveUploads;
@@ -27,7 +28,7 @@ public class PublicActionController {
 
 	protected Logger log = LogManager.getLogger(this.getClass().getName());
 
-	private static GoogleDriveUploads googleUploads = new GoogleDriveUploads();
+	private GoogleDriveUploads googleUploads = new GoogleDriveUploads();
 
 	@GetMapping("/")
 	public String showHome(HttpServletRequest request) {
@@ -73,11 +74,28 @@ public class PublicActionController {
 			List<String> list = googleUploads.getFiles();
 			request.setAttribute("list", list);
 		} catch (CustomException e) {
-			request.setAttribute("errorList", e.getMessage());
+			request.setAttribute("errorMsg", e.getMessage());
 		} catch (Exception e) {
+			request.setAttribute("errorMsg", "Something went wrong. Please try again later");
 			log.debug("error occured ", e);
 		}
 		return UIFormConstants.TILES_FILES_METADATA;
+	}
+
+	@GetMapping(value = "/pub/manageContacts.html")
+	public String manageContacts(HttpServletRequest request) {
+
+		try {
+			List<ContactBean> contactBeans = googleUploads.getContacts();
+			request.setAttribute("contacts", contactBeans);
+		} catch (CustomException e) {
+			request.setAttribute("errorMsg", e.getMessage());
+		} catch (Exception e) {
+			request.setAttribute("errorMsg", "Something went wrong. Please try again later");
+			log.debug("error occured ", e);
+		}
+
+		return UIFormConstants.TILES_MANAGE_CONTACTS;
 	}
 
 }
